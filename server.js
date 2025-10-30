@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 // API endpoint
 app.get('/wolfram', async (req, res) => {
   const query = req.query.input;
-  const url = https://api.wolframalpha.com/v2/query?input=${encodeURIComponent(query)}&format=plaintext&output=JSON&appid=${WOLFRAM_API_KEY};
+  const url = `https://api.wolframalpha.com/v2/query?input=${encodeURIComponent(query)}&format=plaintext&output=JSON&appid=${WOLFRAM_API_KEY}`;
 
   try {
     const response = await fetch(url);
@@ -38,3 +38,4 @@ app.get('/wolfram', async (req, res) => {
 app.use(express.static(__dirname));
 
 app.listen(PORT, () => console.log(Server running on port ${PORT}));
+
