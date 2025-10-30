@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import cors from 'cors';
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT|| 3001;
 
 const WOLFRAM_API_KEY = "8XTHUG54WL";
 
@@ -22,5 +22,6 @@ app.get('/wolfram', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
