@@ -27,19 +27,19 @@ let lastfocus=mx;
 const fetchData=async(test,limit)=>{
     let response="";
     if(twoFlag=="antegral"){
-        response = await fetch(`http://localhost:3001/wolfram?input=integrate+${test}`) 
+        response = await fetch(`/wolfram?input=integrate+${test}`) 
         const data= await response.json()
         const value=data.queryresult.pods[0].subpods[0].plaintext;
         my.innerHTML=value
         
     }else if(twoFlag=="moshtagh"){
-         response = await fetch(`http://localhost:3001/wolfram?input=derivative+of+${test}`) 
+         response = await fetch(`/wolfram?input=derivative+of+${test}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
          my.innerHTML=value;
         
     }else{
-         response = await fetch(`http://localhost:3001/wolfram?input=limit+${test}+x->${limit}`) 
+         response = await fetch(`/wolfram?input=limit+${test}+x->${limit}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
          my.innerHTML=value
@@ -109,4 +109,5 @@ icons.forEach((i)=>{
     })
 })
 mx.addEventListener("click",()=>{lastfocus=mx})
+
 limit.addEventListener("click",()=>{lastfocus=limit})
