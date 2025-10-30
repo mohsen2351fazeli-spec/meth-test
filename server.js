@@ -37,5 +37,6 @@ app.get('/wolfram', async (req, res) => {
 // سرو کردن سایر فایل‌های فرانت‌اند (index.js, style.css و غیره)
 app.use(express.static(__dirname));
 
-app.listen(PORT, () => console.log(Server running on port ${PORT}));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
