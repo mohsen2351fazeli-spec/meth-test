@@ -150,7 +150,7 @@ body {
 .mbtn:hover {
   cursor: pointer;
 }
-.my {
+/* .my {
   width: 100%;
   height: 8rem;
   margin: 0.4rem;
@@ -163,17 +163,7 @@ body {
   align-items: center;
   text-align: center;
   color: rgb(255, 255, 255);
-  /* line-height: 1.4;
-  word-wrap: break-word;
-  overflow-y: auto; */
-
 }
-/* .my > .mjx-chtml {
-    display: inline-block;  یا block اگر می‌خوای وسط چین شود
-    margin: 0 auto;
-    font-size: 1em;         از font-size div پیروی کند
-    white-space: normal;     شکست خطوط خودکار
-} */
 .my::before {
   content: "";
   position: absolute;
@@ -188,6 +178,35 @@ body {
 .my * {
   position: relative;
   z-index: 1;
+} */
+ .my {
+  width: 100%;
+  min-height: 8rem;          /* ارتفاع حداقلی */
+  margin: 0.4rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  text-align: center;
+  overflow-x: auto;          /* اجازه اسکرول افقی برای فرمول‌های طولانی */
+  overflow-y: hidden;        /* ارتفاع محدود، بدون اسکرول عمودی */
+  box-sizing: border-box;
+  display: block;            /* Flex حذف شد */
+  position: relative;
+  font-size: 1rem;         /* اندازه متن قابل تنظیم */
+}
+.my * {
+  position: static;
+  max-width: unset;
+  overflow: visible;
+}
+
+.my::-webkit-scrollbar {
+  height: 6px;               /* نوار اسکرول افقی کوچک */
+}
+.my::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
+  border-radius: 3px;
 }
 .mpictures{
     margin-top: .4rem;
@@ -203,6 +222,14 @@ body {
 }
 .limit{
   width:4rem;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  text-align: center;
+  color: bisque;
+}
+.diraction{
+  width:2rem;
   background-color: inherit;
   border: none;
   outline: none;
@@ -286,5 +313,8 @@ body {
   align-items: center;
   color: bisque;
   font-size: .6rem;
+}
+.my{
+  font-size: .9rem;
 }
 }
