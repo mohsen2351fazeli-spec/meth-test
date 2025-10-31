@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css" />
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.9.0/math.min.js"></script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
     <title>JOGELIANG</title>
   </head>
   <body>
@@ -48,7 +56,7 @@
         
       </div>
 
-      <div class="d hidden">
+      <div class="d ">
         <div class="iconn aa">مبتدی</div>
         <div class="iconn bb">تازه کار</div>
         <div class="iconn cc">نخبه</div>
@@ -56,24 +64,20 @@
         <div class="iconn ee">لجندری</div>
       </div>
 
-      <div class="mbody">
+      <div class="mbody" >
         <div class="mxp">
+          <input type="text" class="diraction" placeholder="...">
           <input type="text" class="mx" placeholder="...اینجا بنویسید" />
           
           <input type="text" class="limit hidden" placeholder="x->">
+          
           <button class="mbtn">برو</button>
         </div>
         <div class="my"></div>
-        
-
+      
       </div>
-      <div class="mpictures">
-            <div class="mn"></div>
-            <div class="ma"></div>
-        </div>
-    </div>
 
+        <script type="module" src="index.js"></script>
     
-    <script src="./index.js"></script>
   </body>
 </html>
