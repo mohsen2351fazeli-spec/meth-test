@@ -290,6 +290,15 @@ body {
   display: none;
 }
 
+.checkbox{
+  position: fixed;
+  bottom: .3rem;
+  left: .3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 @media all and (max-width:400px){
