@@ -521,6 +521,7 @@ const limit=document.querySelector(".limit");
 const icons=document.querySelectorAll(".icon");
 const iconbody=document.querySelector(".icons");
 const dinput=document.querySelector(".diraction");
+const chi=document.querySelector(".chi");
 
 
 const aa=document.querySelector(".aa");
@@ -535,6 +536,8 @@ let oneFlag="m";
 let twoFlag="antegral";
 let lastfocus=mx;
 let diraction=0;
+let generalshow=false;
+let lastvalue="";
 
 
 const fetchData=async(test,limit,d)=>{
@@ -545,52 +548,86 @@ const fetchData=async(test,limit,d)=>{
             return x.q==test
         })
         if(pedarsag.q[10]=="+"){
-            response = await fetch(`/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}+Direction->-1`) 
+            response = await fetch(`http://localhost:3001/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}+Direction->-1`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
-        show(value)
+        if(generalshow)
+            my.innerHTML=value
+        else
+            show(value)
+        lastvalue=value
         }else if(pedarsag.q[10]=="-"){
-            response = await fetch(`/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}+Direction->1`) 
+            response = await fetch(`http://localhost:3001/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}+Direction->1`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
-        show(value)
+        if(generalshow)
+            my.innerHTML=value
+        else
+            show(value)
+        lastvalue=value
         }
         else{
-            response = await fetch(`/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}`) 
+            response = await fetch(`http://localhost:3001/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}`) 
          const data= await response.json()
-         console.log(data);
          
          
          const value=data.queryresult.pods[0].subpods[0].plaintext;
-        show(value)
+        if(generalshow)
+            my.innerHTML=value
+        else
+            show(value)
+        lastvalue=value
         }
-        console.log(pedarsag);
         
         
     }
     else if(twoFlag=="antegral"){
-        response = await fetch(`/wolfram?input=integrate+${test}`) 
+        response = await fetch(`http://localhost:3001/wolfram?input=integrate+${test}`) 
         const data= await response.json()
         const value=data.queryresult.pods[0].subpods[0].plaintext;
-        show(value)
+        if(generalshow)
+            my.innerHTML=value
+        else
+            show(value)
+        lastvalue=value
     }else if(twoFlag=="moshtagh"){
-         response = await fetch(`/wolfram?input=derivative+of+${test}`) 
+         response = await fetch(`http://localhost:3001/wolfram?input=derivative+of+${test}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
-        show(value)
+        if(generalshow)
+            my.innerHTML=value
+        else
+            show(value)
+        lastvalue=value
     }else if(d){
-         response = await fetch(`/wolfram?input=limit+${test}+x->${limit}+Direction->${d}`) 
+         response = await fetch(`http://localhost:3001/wolfram?input=limit+${test}+x->${limit}+Direction->${d}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
-        show(value)
+        if(generalshow)
+            my.innerHTML=value
+        else
+            show(value)
+        lastvalue=value
         
     }else{
-        response = await fetch(`/wolfram?input=limit+${test}+x->${limit}`) 
+        response = await fetch(`http://localhost:3001/wolfram?input=limit+${test}+x->${limit}`) 
          const data= await response.json()
          const value=data.queryresult?.pods[0]?.subpods[0]?.plaintext;
-        show(value)
+        if(generalshow)
+            my.innerHTML=value
+        else
+            show(value)
+        lastvalue=value
         
     }
+
+    
+}
+const clear=()=>{
+    mx.value=""
+    limit.value="";
+    dinput.value="";
+    my.innerHTML="";
 }
 const  show=(str)=> {  
 
@@ -645,7 +682,7 @@ const headerHandler=()=>{
         levelparent.classList.remove("hidden")
     }
     }
-    my.innerHTML=""; 
+    clear()
 }
 const navHandler=()=>{
     const mf=document.querySelectorAll(".mf");
@@ -666,7 +703,7 @@ const navHandler=()=>{
     }
         
 
-    my.innerHTML=""; 
+    clear()
 }
 navHandler()
 headerHandler();
@@ -706,7 +743,7 @@ aa.addEventListener("click",()=>{
         mx.value=bank.dx[0][Math.floor(Math.random()*30)].q
     }else{
         mx.value=bank.lim[0][Math.floor(Math.random()*30)].q
-        limit.value=bank.lim[0][Math.floor(Math.random()*30)].q[8]
+        // limit.value=bank.lim[0][Math.floor(Math.random()*30)].q[8]
         // if(bank.lim[0][Math.floor(Math.random()*30)].q[10]=="+")
             // dinput.value=-1;
         // else if(bank.lim[0][Math.floor(Math.random()*30)].q[10]=="-")
@@ -723,7 +760,7 @@ bb.addEventListener("click",()=>{
         mx.value=bank.dx[1][Math.floor(Math.random()*30)].q
     }else{
         mx.value=bank.lim[1][Math.floor(Math.random()*30)].q
-        limit.value=bank.lim[1][Math.floor(Math.random()*30)].q[8]
+        // limit.value=bank.lim[1][Math.floor(Math.random()*30)].q[8]
         // if(bank.lim[1][Math.floor(Math.random()*30)].q[10]=="+")
             // dinput.value=-1;
         // else if(bank.lim[1][Math.floor(Math.random()*30)].q[10]=="-")
@@ -740,7 +777,7 @@ cc.addEventListener("click",()=>{
         mx.value=bank.dx[2][Math.floor(Math.random()*30)].q
     }else{
         mx.value=bank.lim[2][Math.floor(Math.random()*30)].q
-        limit.value=bank.lim[2][Math.floor(Math.random()*30)].q[8]
+        // limit.value=bank.lim[2][Math.floor(Math.random()*30)].q[8]
         // if(bank.lim[2][Math.floor(Math.random()*30)].q[10]=="+")
             // dinput.value=-1;
         // else if(bank.lim[2][Math.floor(Math.random()*30)].q[10]=="-")
@@ -757,7 +794,7 @@ dd.addEventListener("click",()=>{
         mx.value=bank.dx[3][Math.floor(Math.random()*30)].q
     }else{
         mx.value=bank.lim[3][Math.floor(Math.random()*30)].q
-        limit.value=bank.lim[3][Math.floor(Math.random()*30)].q[8]
+        // limit.value=bank.lim[3][Math.floor(Math.random()*30)].q[8]
         // if(bank.lim[3][Math.floor(Math.random()*30)].q[10]=="+")
             // dinput.value=-1;
         // else if(bank.lim[3][Math.floor(Math.random()*30)].q[10]=="-")
@@ -774,7 +811,7 @@ ee.addEventListener("click",()=>{
         mx.value=bank.dx[4][Math.floor(Math.random()*30)].q
     }else{
         mx.value=bank.lim[4][Math.floor(Math.random()*30)].q
-        limit.value=bank.lim[4][Math.floor(Math.random()*30)].q[8]
+        // limit.value=bank.lim[4][Math.floor(Math.random()*30)].q[8]
         // if(bank.lim[4][Math.floor(Math.random()*30)].q[10]=="+")
             // dinput.value=-1;
         // else if(bank.lim[4][Math.floor(Math.random()*30)].q[10]=="-")
@@ -783,7 +820,14 @@ ee.addEventListener("click",()=>{
             // dinput.value=""
     }
 })
-
-
+chi.addEventListener("change",()=>{
+    if(chi.checked){
+        generalshow=true
+        my.innerHTML=lastvalue;
+    }else{
+        generalshow=false
+        show(lastvalue)
+    }
+})
 
 
