@@ -541,6 +541,9 @@ let lastvalue="";
 
 
 const fetchData=async(test,limit,d)=>{
+    
+    
+    
     let response="";
     if(oneFlag=="t"&& twoFlag=="had"){
         const dark=[...bank.lim[0],...bank.lim[1],...bank.lim[2],...bank.lim[3],...bank.lim[4]];
@@ -548,7 +551,7 @@ const fetchData=async(test,limit,d)=>{
             return x.q==test
         })
         if(pedarsag.q[10]=="+"){
-            response = await fetch(`/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}+Direction->-1`) 
+            response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}+Direction->-1`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -557,7 +560,7 @@ const fetchData=async(test,limit,d)=>{
             show(value)
         lastvalue=value
         }else if(pedarsag.q[10]=="-"){
-            response = await fetch(`/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}+Direction->1`) 
+            response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}+Direction->1`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -567,7 +570,7 @@ const fetchData=async(test,limit,d)=>{
         lastvalue=value
         }
         else{
-            response = await fetch(`/wolfram?input=limit+${pedarsag.wolfram}+x->${pedarsag.q[8]}`) 
+            response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}`) 
          const data= await response.json()
          
          
@@ -582,7 +585,7 @@ const fetchData=async(test,limit,d)=>{
         
     }
     else if(twoFlag=="antegral"){
-        response = await fetch(`/wolfram?input=integrate+${test}`) 
+        response = await fetch(`http://localhost:3001/wolfram?input=integrate+${gclear(test)}`) 
         const data= await response.json()
         const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -591,7 +594,7 @@ const fetchData=async(test,limit,d)=>{
             show(value)
         lastvalue=value
     }else if(twoFlag=="moshtagh"){
-         response = await fetch(`/wolfram?input=derivative+of+${test}`) 
+         response = await fetch(`http://localhost:3001/wolfram?input=derivative+of+${gclear(test)}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -600,7 +603,7 @@ const fetchData=async(test,limit,d)=>{
             show(value)
         lastvalue=value
     }else if(d){
-         response = await fetch(`/wolfram?input=limit+${test}+x->${limit}+Direction->${d}`) 
+         response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(test)}+x->${limit}+Direction->${d}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -610,7 +613,7 @@ const fetchData=async(test,limit,d)=>{
         lastvalue=value
         
     }else{
-        response = await fetch(`/wolfram?input=limit+${test}+x->${limit}`) 
+        response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(test)}+x->${limit}`) 
          const data= await response.json()
          const value=data.queryresult?.pods[0]?.subpods[0]?.plaintext;
         if(generalshow)
@@ -715,6 +718,19 @@ tSection.addEventListener("click",()=>{
     oneFlag="t";
     headerHandler();
 })
+const gclear=(x)=>{
+    const array=x.split("");
+    array.forEach((a,i)=>{
+        if(a=="+"&&array[i-1]!="^")
+            array.splice(i,1,"+plus+")
+    })
+
+    return array.join("")
+}
+
+
+
+
 antegral.addEventListener("click",()=>{twoFlag="antegral";navHandler()});
 moshtagh.addEventListener("click",()=>{twoFlag="moshtagh";navHandler()});
 had.addEventListener("click",()=>{twoFlag="had";navHandler()});
@@ -736,6 +752,7 @@ dinput.addEventListener("keyup",()=>{
 
 
 aa.addEventListener("click",()=>{
+    clear()
     
     if(twoFlag=="antegral"){
         mx.value=bank.int[0][Math.floor(Math.random()*30)].q
@@ -753,7 +770,7 @@ aa.addEventListener("click",()=>{
     }
 })
 bb.addEventListener("click",()=>{
-    
+    clear()
     if(twoFlag=="antegral"){
         mx.value=bank.int[1][Math.floor(Math.random()*30)].q
     }else if(twoFlag=="moshtagh"){
@@ -770,7 +787,7 @@ bb.addEventListener("click",()=>{
     }
 })
 cc.addEventListener("click",()=>{
-    
+    clear()
     if(twoFlag=="antegral"){
         mx.value=bank.int[2][Math.floor(Math.random()*30)].q
     }else if(twoFlag=="moshtagh"){
@@ -787,7 +804,7 @@ cc.addEventListener("click",()=>{
     }
 })
 dd.addEventListener("click",()=>{
-    
+    clear()
     if(twoFlag=="antegral"){
         mx.value=bank.int[3][Math.floor(Math.random()*30)].q
     }else if(twoFlag=="moshtagh"){
@@ -804,7 +821,7 @@ dd.addEventListener("click",()=>{
     }
 })
 ee.addEventListener("click",()=>{
-    
+    clear()
     if(twoFlag=="antegral"){
         mx.value=bank.int[4][Math.floor(Math.random()*30)].q
     }else if(twoFlag=="moshtagh"){
@@ -821,14 +838,16 @@ ee.addEventListener("click",()=>{
     }
 })
 chi.addEventListener("change",()=>{
-    if(chi.checked){
+    if(mx.value){
+      if(chi.checked){
         generalshow=true
         my.innerHTML=lastvalue;
     }else{
         generalshow=false
         show(lastvalue)
+    }  
     }
+    
 })
-
 
 
