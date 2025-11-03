@@ -551,7 +551,7 @@ const fetchData=async(test,limit,d)=>{
             return x.q==test
         })
         if(pedarsag.q[10]=="+"){
-            response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}+Direction->-1`) 
+            response = await fetch(`/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}+Direction->-1`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -560,7 +560,7 @@ const fetchData=async(test,limit,d)=>{
             show(value)
         lastvalue=value
         }else if(pedarsag.q[10]=="-"){
-            response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}+Direction->1`) 
+            response = await fetch(`/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}+Direction->1`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -570,7 +570,7 @@ const fetchData=async(test,limit,d)=>{
         lastvalue=value
         }
         else{
-            response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}`) 
+            response = await fetch(`/wolfram?input=limit+${gclear(pedarsag.wolfram)}+x->${pedarsag.q[8]}`) 
          const data= await response.json()
          
          
@@ -585,7 +585,7 @@ const fetchData=async(test,limit,d)=>{
         
     }
     else if(twoFlag=="antegral"){
-        response = await fetch(`http://localhost:3001/wolfram?input=integrate+${gclear(test)}`) 
+        response = await fetch(`/wolfram?input=integrate+${gclear(test)}`) 
         const data= await response.json()
         const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -594,7 +594,7 @@ const fetchData=async(test,limit,d)=>{
             show(value)
         lastvalue=value
     }else if(twoFlag=="moshtagh"){
-         response = await fetch(`http://localhost:3001/wolfram?input=derivative+of+${gclear(test)}`) 
+         response = await fetch(`/wolfram?input=derivative+of+${gclear(test)}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -603,7 +603,7 @@ const fetchData=async(test,limit,d)=>{
             show(value)
         lastvalue=value
     }else if(d){
-         response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(test)}+x->${limit}+Direction->${d}`) 
+         response = await fetch(`/wolfram?input=limit+${gclear(test)}+x->${limit}+Direction->${d}`) 
          const data= await response.json()
          const value=data.queryresult.pods[0].subpods[0].plaintext;
         if(generalshow)
@@ -613,7 +613,7 @@ const fetchData=async(test,limit,d)=>{
         lastvalue=value
         
     }else{
-        response = await fetch(`http://localhost:3001/wolfram?input=limit+${gclear(test)}+x->${limit}`) 
+        response = await fetch(`/wolfram?input=limit+${gclear(test)}+x->${limit}`) 
          const data= await response.json()
          const value=data.queryresult?.pods[0]?.subpods[0]?.plaintext;
         if(generalshow)
@@ -849,5 +849,6 @@ chi.addEventListener("change",()=>{
     }
     
 })
+
 
 
