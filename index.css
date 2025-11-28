@@ -187,7 +187,7 @@ body {
   z-index: 1;
 } */
 
-/*
+
  .my {
   width: 100%;
   min-height: 8rem;         
@@ -202,17 +202,18 @@ body {
   box-sizing: border-box;
   display: block;            
   position: relative;
-  font-size: 1rem;         
+  font-size: 1rem;     
+   direction: ltr ;
 }
-*/
 
-/*
+
+
 .my * {
   position: static;
   max-width: unset;
   overflow: visible;
 }
-*/
+
 .my::-webkit-scrollbar {
   height: 6px;               /* نوار اسکرول افقی کوچک */
 }
@@ -324,7 +325,7 @@ mjx-container * {
     font-family: MJXZERO, MJXTEX !important;
 }
 
-/* باکس نمایش ریاضی */
+/* 
 .my {
     direction: ltr !important;
     text-align: center !important;
@@ -332,14 +333,14 @@ mjx-container * {
     overflow-y: visible !important;
 }
 
-/* جلوگیری از خراب شدن ساختار داخلی MathJax */
+
 .my * {
     position: initial !important;
     overflow: visible !important;
     max-width: none !important;
 }
 
-
+*/
 
 
 @media all and (max-width:400px){
@@ -368,5 +369,6 @@ mjx-container * {
   font-size: .9rem;
 }
 }
+
 
 
