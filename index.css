@@ -1,12 +1,19 @@
 html {
   font-size: 100%;
 }
+/*
 * {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: "shabnam";
+}  */
+*:not(mjx-container):not(mjx-container *):not(svg):not(mjx-svg *) {
+  margin: 0;
+  padding: 0;
+  font-family: "shabnam";
 }
+
 body {
   width: 100vw;
   height: 100vh;
@@ -195,12 +202,13 @@ body {
   position: relative;
   font-size: 1rem;         /* اندازه متن قابل تنظیم */
 }
+/*
 .my * {
   position: static;
   max-width: unset;
   overflow: visible;
 }
-
+*/
 .my::-webkit-scrollbar {
   height: 6px;               /* نوار اسکرول افقی کوچک */
 }
@@ -299,6 +307,35 @@ body {
   align-items: center;
 }
 
+/* جلوگیری از خراب شدن MathJax توسط استایل‌های عمومی */
+mjx-container {
+    direction: ltr !important;
+    unicode-bidi: isolate !important;
+    font-size: 1.2rem !important;
+    line-height: normal !important;
+    margin: .5rem 0 !important;
+}
+
+mjx-container * {
+    font-family: MJXZERO, MJXTEX !important;
+}
+
+/* باکس نمایش ریاضی */
+.my {
+    direction: ltr !important;
+    text-align: center !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+}
+
+/* جلوگیری از خراب شدن ساختار داخلی MathJax */
+.my * {
+    position: initial !important;
+    overflow: visible !important;
+    max-width: none !important;
+}
+
+
 
 
 @media all and (max-width:400px){
@@ -327,3 +364,4 @@ body {
   font-size: .9rem;
 }
 }
+
