@@ -186,22 +186,26 @@ body {
   position: relative;
   z-index: 1;
 } */
+
+/*
  .my {
   width: 100%;
-  min-height: 8rem;          /* ارتفاع حداقلی */
+  min-height: 8rem;         
   margin: 0.4rem;
   padding: 1rem;
   border-radius: 2rem;
   background: rgba(0,0,0,0.4);
   color: #fff;
   text-align: center;
-  overflow-x: auto;          /* اجازه اسکرول افقی برای فرمول‌های طولانی */
-  overflow-y: hidden;        /* ارتفاع محدود، بدون اسکرول عمودی */
+  overflow-x: auto;          
+  overflow-y: hidden;        
   box-sizing: border-box;
-  display: block;            /* Flex حذف شد */
+  display: block;            
   position: relative;
-  font-size: 1rem;         /* اندازه متن قابل تنظیم */
+  font-size: 1rem;         
 }
+*/
+
 /*
 .my * {
   position: static;
@@ -364,4 +368,5 @@ mjx-container * {
   font-size: .9rem;
 }
 }
+
 
