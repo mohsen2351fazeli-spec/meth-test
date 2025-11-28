@@ -314,7 +314,7 @@ body {
   align-items: center;
 }
 
-/* جلوگیری از خراب شدن MathJax توسط استایل‌های عمومی */
+/* 
 mjx-container {
     direction: ltr !important;
     unicode-bidi: isolate !important;
@@ -326,7 +326,7 @@ mjx-container {
 mjx-container * {
     font-family: MJXZERO, MJXTEX !important;
 }
-
+*/
 /* 
 .my {
     direction: ltr !important;
@@ -371,6 +371,7 @@ mjx-container * {
   font-size: .9rem;
 }
 }
+
 
 
 
