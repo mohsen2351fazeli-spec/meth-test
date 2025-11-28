@@ -1,19 +1,20 @@
 html {
   font-size: 100%;
 }
-/*
+
 * {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: "shabnam";
-}  */
+}  
+/*
 *:not(mjx-container):not(mjx-container *):not(svg):not(mjx-svg *) {
   margin: 0;
   padding: 0;
   font-family: "shabnam";
 }
-
+*/
 body {
   width: 100vw;
   height: 100vh;
@@ -204,6 +205,7 @@ body {
   position: relative;
   font-size: 1rem;     
    direction: ltr ;
+   font-family: MJXZERO, MJXTEX !important;
 }
 
 
@@ -369,6 +371,7 @@ mjx-container * {
   font-size: .9rem;
 }
 }
+
 
 
 
