@@ -203,9 +203,7 @@ body {
   box-sizing: border-box;
   display: block;            
   position: relative;
-  font-size: 1rem;     
-   direction: ltr ;
-   font-family: MJXZERO, MJXTEX !important;
+  font-size: 1rem;    
 }
 
 
@@ -371,6 +369,7 @@ mjx-container * {
   font-size: .9rem;
 }
 }
+
 
 
 
