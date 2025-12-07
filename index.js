@@ -1,3 +1,4 @@
+
 const bank={
     int:[
         [
@@ -852,3 +853,14 @@ chi.addEventListener("change",()=>{
 
 
 
+const aaaa=document.querySelector(".exp-btn")
+const bbbb=document.querySelector(".hide-btn")
+const cccc=document.querySelector(".exp")
+
+aaaa.addEventListener("click",()=>{
+    cccc.classList.remove("h")
+})
+
+bbbb.addEventListener("click",()=>{
+    cccc.classList.add("h")
+})
