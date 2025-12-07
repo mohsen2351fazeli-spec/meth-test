@@ -343,6 +343,60 @@ mjx-container * {
 */
 
 
+.exp-btn{
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 5rem;
+    background-color: rgb(65, 96, 96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+
+}
+.exp-btn:hover{
+    cursor: pointer;
+}
+.exp{
+    position: absolute;
+    background-color: white;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    padding: .4rem;
+    gap: 1rem;
+    height: auto;
+    overflow-y: scroll;
+}
+.hide-btn{
+    height: 2rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 1.8rem;
+    overflow-y: hidden;
+}
+.hide-btn:hover{
+    cursor: pointer;
+}
+.exp-div{
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.h{
+    display: none;
+    position: relative;
+}
+
+
+
+
+
 @media all and (max-width:400px){
   .mbody{
     margin-top: 1rem;
@@ -368,8 +422,22 @@ mjx-container * {
 .my{
   font-size: .9rem;
 }
-}
+.exp-btn{
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5rem;
+    background-color: azure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
 
+
+}
+}
 
 
 
