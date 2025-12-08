@@ -154,6 +154,7 @@ body {
   background: inherit;
   text-align: center;
   color: bisque;
+  transition: all 1000ms;
 }
 .mbtn:hover {
   cursor: pointer;
@@ -341,6 +342,9 @@ mjx-container * {
 }
 
 */
+.mbtn:active{
+  scale: 2;
+}
 
 
 .exp-btn{
@@ -367,7 +371,7 @@ mjx-container * {
     display: flex;
     flex-direction: column;
     padding: .4rem;
-    gap: 1rem;
+    gap: 8rem;
     height: auto;
     overflow-y: scroll;
 }
@@ -376,7 +380,7 @@ mjx-container * {
     display: flex;
     justify-content: start;
     align-items: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     overflow-y: hidden;
 }
 .hide-btn:hover{
@@ -392,12 +396,17 @@ mjx-container * {
     display: none;
     position: relative;
 }
+.exp-hed{
+  font-size: 3.5rem;
+}
+.ss{
+  font-size: 2rem;
+  text-align: justify;
+}
 
 
 
-
-
-@media all and (max-width:400px){
+@media all and (max-width:500px){
   .mbody{
     margin-top: 1rem;
     display: flex;
@@ -437,8 +446,14 @@ mjx-container * {
 
 
 }
+.exp-hed{
+  font-size: 1.2rem;
 }
-
+.ss{
+  font-size: 1rem;
+  text-align: justify;
+}
+}
 
 
 
